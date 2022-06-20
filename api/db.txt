@@ -1,0 +1,66 @@
+Create table members(
+    id Int Primary Key AUTO_INCREMENT,
+    firstname varchar(255),
+    lastname varchar(255),
+    birthday Date,
+    phone Int,
+    sexe varchar(1),
+    poste varchar(255),
+    id_circonscription int,
+    secteur varchar(255),
+    localite varchar(255),
+    picture varchar(255),
+    observation varchar(255),
+    creation_date Date,
+    update_date Date,
+    id_dortoir Int,
+    
+    constraint fk_dort_attrib_dortoir foreign key(id_dortoir) references dortoirs(id)
+    constraint fk_membrs_Circonscrip foreign key(id_circonscription) references circonscriptions(id)
+);
+
+Create table dortoirs(
+    id Int Primary Key AUTO_INCREMENT,
+    name varchar(250),
+    qte_requise Int,
+    nbre Int
+);
+
+INSERT INTO `dortoirs`(`name`, `qte_requise`, `nbre`) VALUES ('SAMUEL DALE',10,0), ('NOUMESSI ANATOLE',10,0), ('NOUMESSI ANATOLE',10,0), ('CHARLES ALAIN MBAH',10,0), ('DJONG-YANG SILAS',10,0), ('GANGNAMOU PHILIPPE',10,0), ('BOUBA-ADJI DJIDDA JOSEPH',10,0), ('ALDARA JOSEPH',10,0), ('ISSA YEKARE BRUNO',10,0), ('PISMO ALPHONSE',10,0), ('TODOU MALDAWA JACOB',10,0), ('LINGOUN THOMAS',10,0), ('ABDOU MADANG MAURICE',10,0), ('MATIP HENRY',10,0), ('ANKONG CYRIAQUE',10,0), ('OWONA MBARGA HENRY',10,0), ('LAWA JEAN',10,0), ('BANGUENA OLEMBA SYLVAIN',10,0), ('MOKOKO ANTOINE DESIRE',10,0), ('DJOMBE OBAKER',10,0), ('MEKONGSO CARLOS',10,0), ('NTOOGUE JOSEPH',10,0), ('OBAM ZE MARCEL',10,0), ('AMADOU GARGA ETIENNE',10,0), ('WROUMSIA DAILASSOU EMMANUEL',10,0), ('BABOL BENJAMIN',10,0), ('NKOUSSA BEKADA LAZARE',10,0), ('WANGYANG ANDRE',10,0), ('BILAMBOZOUM JEAN-BAPTISTE',10,0);
+
+Create table circonscriptions(
+    id Int Primary Key AUTO_INCREMENT,
+    name varchar(250),
+    responsable varchar(255)
+);
+
+INSERT INTO `circonscriptions`(`name`, `responsable`) VALUES ('ADAMAOUA','Dirigeants'), ('BOUMBA-NGOKO','Dirigeants'), ('DIAMARE-1','Dirigeants'), ('DIAMARE-2','Dirigeants'), ('EST-CENTRE','Dirigeants'), ('HAUTE-SANAGA','Dirigeants'), ('LEKIE','Dirigeants'), ('BOUMBA-NGOKO','Dirigeants'), ('LOGONE-CHARI','Dirigeants'), ('MAYO-DANAY-NORD','Dirigeants'), ('MAYO-DANAY-SUD','Dirigeants'), ('MBAM-INOUGOU','Dirigeants'), ('MBAM-KIM','Dirigeants'), ('MEFOU-AFAMBA','Dirigeants'), ('MFOUNDI-1','Dirigeants'), ('MFOUNDI-2','Dirigeants'), ('MOUNGO','Dirigeants'), ('NORD','Dirigeants'), ('NYONG-EKELLE','Dirigeants'), ('OUEST-NW-MAYO-BANYO','Dirigeants'), ('SANAGA-MARITIME-NORD','Dirigeants'), ('SANAGA-MARITIME-SUD-OCEAN','Dirigeants'), ('SUD-OUEST','Dirigeants'), ('WOURI','Dirigeants');
+
+Create table gestionnaire(
+    id Int Primary Key AUTO_INCREMENT,
+    id_members Int,
+    login varchar(255),
+    pass varchar(255),
+    
+    constraint fk_gest_membrs foreign key(id_members) references members(id)
+);
+
+Create table admin(
+    id Int Primary Key AUTO_INCREMENT,
+    login varchar(255),
+    pass varchar(255)
+);
+
+Create table participation(
+    id Int Primary Key AUTO_INCREMENT,
+    idmember Int,
+    montant Int,
+    constraint fk_particip_member foreign key(idmember) references members(id)
+);
+
+Create table publication(
+    id Int Primary Key AUTO_INCREMENT,
+    img varchar(255),
+    title varchar(255),
+    description varchar(255)
+);

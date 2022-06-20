@@ -1,0 +1,10 @@
+{
+  "projectName": "jpc2022-api",
+  "meta": {
+    "type": "backend"
+  },
+  "backend": {
+    "platform": "php7.4"
+  },
+  "hash": "ea462e3b"
+}
